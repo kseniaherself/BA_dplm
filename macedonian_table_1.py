@@ -4,7 +4,7 @@ start_time = time.time()
 
 def m_1():
     f_name = 'macedonian_dict1.tsv'
-    f2_name = 'words_macedonian.txt'
+    f2_name = 'wordforms_macedonian.txt'
 
     df = pd.read_csv(f_name, sep='\t', usecols=['POS', 'dict_entry'])
 

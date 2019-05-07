@@ -73,8 +73,8 @@ def F_ipa_transcriber(word):
 
 # основная функция
 def m_1():
-    f_name = 'words_macedonian.txt'
-    f_name_2 = 'ipa_words_macedonian.txt'
+    f_name = 'wordforms_macedonian.txt'
+    f_name_2 = 'ipa_' + f_name
 
     print('im in!')
 
