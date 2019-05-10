@@ -72,7 +72,7 @@ def F_ipa_transcriber(word):
     return word
 
 # основная функция
-def m_1():
+def M_1():
     f_name = 'wordforms_macedonian.txt'
     f_name_2 = 'ipa_' + f_name
 
@@ -112,7 +112,7 @@ def m_1():
 
     F_write_in_file(ipa_words, f_name_2)
 
-m_1()
+M_1()
 
 
 print("--- %s seconds ---" % (time.time() - start_time))
