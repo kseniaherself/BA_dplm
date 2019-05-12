@@ -44,12 +44,23 @@ def M_1():
     mutable_sonorant = ['м', 'н', 'л', 'р']
     ipa_mutable_sonorant = ['N', 'N', 'L', 'R']
 
+    hard_voc = ['а', 'о', 'у', 'э', 'ы']
+    jot_voc = ['я', 'ё', 'ю', 'е']
+    soft_voc = ['и']
+
+    er = ['ъ']
+    erj = ['ь']
+
     f_name = 'lexemes_russian.tsv'
     #f2_name = 'ipa_' + f_name
-    df = pd.read_csv(f_name, sep='\t', usecols=['lexemes'])
-    for elem in df:
-        elem_let = F_lettering(elem)
-        print()
+    #df = pd.read_csv(f_name, sep='\t', usecols=['lexemes'])
+    df = pd.read_csv(f_name, sep='\t', usecols=['lexemes'], nrows = 15)
+
+    for elem in df['lexemes']:
+        elem_low = elem.lower()
+        #print(elem_low)
+        elem_let = F_lettering(elem_low)
+        print(elem_let)
 
 
 
