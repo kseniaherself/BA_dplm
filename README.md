@@ -22,5 +22,12 @@ The program excludes abbreviations, conjunction, compounds, words including '’
 
 Words are presented as sound-sound-... . 
 
+#### transpose_russian .py 
+*transpose_russian .py* transposes russian words from *XXX .txt* to *ipa_XXX .txt*. 
+
+Words are presented as sound_quality-sound_quality-... . 
+
+
+
 
 ### programs_2 
