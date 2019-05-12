@@ -45,6 +45,8 @@ def M_1():
     ipa_mutable_sonorant = ['N', 'N', 'L', 'R']
 
     hard_voc = ['а', 'о', 'у', 'э', 'ы']
+    ips_hard_voc = []
+    
     jot_voc = ['я', 'ё', 'ю', 'е']
     soft_voc = ['и']
 
