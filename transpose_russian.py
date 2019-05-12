@@ -16,8 +16,20 @@
 # что делать с й? зависит ведь от ударения
 # тоже проблемы с В!
 
+import pandas as pd
 import time
 start_time = time.time()
+
+
+# разбиение на символы: на входе слово, на выходе оно в разделённом виде
+def F_lettering(word):
+    lettering = ''
+
+    for element in word:
+        lettering = lettering + '-' + element
+    lettering = lettering.replace('-', '', 1)
+
+    return lettering
 
 def M_1():
     hard_immut = ['ш', 'ж', 'ц']
@@ -31,6 +43,15 @@ def M_1():
 
     mutable_sonorant = ['м', 'н', 'л', 'р']
     ipa_mutable_sonorant = ['N', 'N', 'L', 'R']
+
+    f_name = 'lexemes_russian.tsv'
+    #f2_name = 'ipa_' + f_name
+    df = pd.read_csv(f_name, sep='\t', usecols=['lexemes'])
+    for elem in df:
+        elem_let = F_lettering(elem)
+        print()
+
+
 
 
 
