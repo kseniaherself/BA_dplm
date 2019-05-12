@@ -31,7 +31,10 @@ def F_lettering(word):
 
     return lettering
 
-def M_1():
+# тут должно транскрибироваться; на вход разбитое по символам слово
+def F_transposer(word):
+    #olala
+
     hard_immut = ['ш', 'ж', 'ц']
     ipa_hard_immut = ['O', 'O', 'O']
 
@@ -45,13 +48,21 @@ def M_1():
     ipa_mutable_sonorant = ['N', 'N', 'L', 'R']
 
     hard_voc = ['а', 'о', 'у', 'э', 'ы']
-    ips_hard_voc = []
-    
+    ips_hard_voc = ['a', 'o', 'u', 'ɛ', 'y']
+
     jot_voc = ['я', 'ё', 'ю', 'е']
+    ipa_jot_voc = ['a', 'o', 'u', 'e']
+
     soft_voc = ['и']
+    ipa_soft_voc = ['i']
 
     er = ['ъ']
     erj = ['ь']
+
+    # use replace не sub !!!!! 
+
+
+def M_1():
 
     f_name = 'lexemes_russian.tsv'
     #f2_name = 'ipa_' + f_name
@@ -63,7 +74,7 @@ def M_1():
         #print(elem_low)
         elem_let = F_lettering(elem_low)
         print(elem_let)
-
+        elem_ipa = 'xz'
 
 
 
