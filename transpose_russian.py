@@ -79,7 +79,7 @@ def F_transposer(word):
     # use replace не sub !!!!!
     for element in word:
 
-        for m in range(0, len(hard_voc)):
+        for m in range(0, 5): #len(hard_voc)):
             if hard_voc[m] == element:
                 word = word.replace(hard_voc[m], ipa_hard_voc[m])
                 print(word)
@@ -124,7 +124,7 @@ def M_1():
     f_name = 'lexemes_russian.tsv'
     #f2_name = 'ipa_' + f_name
     #df = pd.read_csv(f_name, sep='\t', usecols=['lexemes'])
-    df = pd.read_csv(f_name, sep='\t', usecols=['lexemes'], nrows = 35)
+    df = pd.read_csv(f_name, sep='\t', usecols=['lexemes'], nrows = 305)
 
     for elem in df['lexemes']:
         elem_1 = elem.replace('-', '_')
