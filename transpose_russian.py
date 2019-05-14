@@ -75,34 +75,39 @@ def F_transposer(word):
     #for a in range (1, len(jot_voc)):
     #    if ('-й-' + jot_voc[a]) in word:
     #        print(word)
+    #print(len(hard_voc))
+    #print(hard_voc[4])
+    #for e in range(0, len(hard_voc)):
+    #    print(e)
 
     # use replace не sub !!!!!
     for element in word:
 
-        for m in range(0, 5): #len(hard_voc)):
+        for m in range(0, len(hard_voc)):
             if hard_voc[m] == element:
+                #print(hard_voc[m])
                 word = word.replace(hard_voc[m], ipa_hard_voc[m])
-                print(word)
+                #print(word)
 
-        for i in range(0, len(hard_immut)):
+        for i in range(0, (len(hard_immut))):
             if hard_immut[i] == element:
                 word = word.replace(hard_immut[i], ipa_hard_immut[i])
 
-        for j in range(0, len(soft_immut)):
+        for j in range(0, (len(soft_immut))):
             if soft_immut[j] == element:
-                word = word.replace(soft_immut[j], ipa_soft_immut[j])
+                #word = word.replace(soft_immut[j], ipa_soft_immut[j])
 
     word = word.replace(jot, ipa_jot)
 
-    for k in range(1, len(jot_voc)):
+    for k in range(1, (len(jot_voc))):
         word = word.replace(('O-' + jot_voc[k]), ('O-' + ipa_hard_voc[k]))
 
     for elem in word:
-        for l in range(1, len(mutable_obstr)):
+        for l in range(1, (len(mutable_obstr))):
             if mutable_obstr[l] == elem:
                 word = word.replace(mutable_obstr[l], ipa_mutable_obstr[l])
 
-    for m in range(1, len(jot_voc)):
+    for m in range(1, (len(jot_voc))):
         word = word.replace(('O-' + jot_voc[m]), ('O-' + ipa_jot_voc[m]))
 
 
@@ -116,7 +121,7 @@ def F_transposer(word):
     #        print(word)
 
 
-    #print(word)
+    print(word)
 
 
 def M_1():
@@ -124,7 +129,7 @@ def M_1():
     f_name = 'lexemes_russian.tsv'
     #f2_name = 'ipa_' + f_name
     #df = pd.read_csv(f_name, sep='\t', usecols=['lexemes'])
-    df = pd.read_csv(f_name, sep='\t', usecols=['lexemes'], nrows = 305)
+    df = pd.read_csv(f_name, sep='\t', usecols=['lexemes'], nrows = 777)
 
     for elem in df['lexemes']:
         elem_1 = elem.replace('-', '_')
