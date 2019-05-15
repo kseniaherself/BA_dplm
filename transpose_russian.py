@@ -122,7 +122,7 @@ def F_transposer(word):
     for r in range(1, len(mutable_sonorant)):
         word = word.replace(mutable_sonorant[r], ipa_mutable_sonorant[r])
         if ('O-' + ipa_mutable_sonorant[r] + '-O'):
-            word_syl = word.replace('O-' + ipa_mutable_sonorant[r] + '-O')
+            word_syl = word.replace(('O-' + ipa_mutable_sonorant[r] + '-O'), ('O-' + ipa_mutable_sonorant[r] + 'ə' + '-O'))
 
     #if '' in word:
     #    word = word.replace('', '')
@@ -133,6 +133,8 @@ def F_transposer(word):
 
 
     print(word)
+
+    print(word_syl)
 
 
 def M_1():
