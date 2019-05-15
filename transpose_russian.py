@@ -75,18 +75,14 @@ def F_transposer(word):
     #for a in range (1, len(jot_voc)):
     #    if ('-й-' + jot_voc[a]) in word:
     #        print(word)
-    #print(len(hard_voc))
-    #print(hard_voc[4])
-    #for e in range(0, len(hard_voc)):
-    #    print(e)
 
     # use replace не sub !!!!!
     for element in word:
 
-        for m in range(0, len(hard_voc)):
-            if hard_voc[m] == element:
+        for n in range(0, (len(hard_voc))):
+            if hard_voc[n] == element:
                 #print(hard_voc[m])
-                word = word.replace(hard_voc[m], ipa_hard_voc[m])
+                word = word.replace(hard_voc[n], ipa_hard_voc[n])
                 #print(word)
 
         for i in range(0, (len(hard_immut))):
@@ -95,7 +91,7 @@ def F_transposer(word):
 
         for j in range(0, (len(soft_immut))):
             if soft_immut[j] == element:
-                #word = word.replace(soft_immut[j], ipa_soft_immut[j])
+                word = word.replace(soft_immut[j], ipa_soft_immut[j])
 
     word = word.replace(jot, ipa_jot)
 
@@ -110,8 +106,15 @@ def F_transposer(word):
     for m in range(1, (len(jot_voc))):
         word = word.replace(('O-' + jot_voc[m]), ('O-' + ipa_jot_voc[m]))
 
+    print(word)
+    for o in range(1, len(jot_voc)):
+        for p in range(1, (len(jot_voc))):
+            word = word.replace((jot_voc[p] + '-' + jot_voc[o]), (jot_voc[p] + '-' + ipa_jot + '-' + ipa_jot_voc[o]))
 
+        for q in range(1, len(ipa_hard_voc)):
+            word = word.replace((ipa_hard_voc[q] + '-' + jot_voc[o]), (ipa_hard_voc[q] + '-' + ipa_jot + '-' + ipa_jot_voc[o]))
 
+        word = word.replace((soft_voc[0] + '-' + jot_voc[o]), (ipa_soft_voc[0] + '-' + ipa_jot + '-' + ipa_jot_voc[o]))
 
     #if '' in word:
     #    word = word.replace('', '')
