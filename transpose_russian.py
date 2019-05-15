@@ -56,11 +56,14 @@ def F_transposer(word):
     soft_voc = 'и'
     ipa_soft_voc = 'I'
 
+    www = 'в'
+    ipa_w = 'W'
+
     jot = 'й'
     ipa_jot = 'J'
 
-    er = ['ъ']
-    erj = ['ь']
+    er = 'ъ'
+    erj = 'ь'
 
     # печатает слова с оригинальным '-'
     #if '_' in word:
@@ -95,48 +98,53 @@ def F_transposer(word):
 
     word = word.replace(jot, ipa_jot)
     word = word.replace(soft_voc, ipa_soft_voc)
-    word = word.replace('в', 'W')
 
-    for k in range(1, (len(jot_voc))):
+    for k in range(0, (len(jot_voc))):
         word = word.replace(('O-' + jot_voc[k]), ('O-' + ipa_hard_voc[k]))
 
     for elem in word:
-        for l in range(1, (len(mutable_obstr))):
+        for l in range(0, (len(mutable_obstr))):
             if mutable_obstr[l] == elem:
                 word = word.replace(mutable_obstr[l], ipa_mutable_obstr[l])
 
-    for m in range(1, (len(jot_voc))):
+    for m in range(0, (len(jot_voc))):
         word = word.replace(('O-' + jot_voc[m]), ('O-' + ipa_jot_voc[m]))
 
-    print(word)
-    for o in range(1, len(jot_voc)):
-        for p in range(1, (len(jot_voc))):
+    #print(word)
+    for o in range(0, len(jot_voc)):
+
+        for p in range(0, (len(jot_voc))):
             word = word.replace((jot_voc[p] + '-' + jot_voc[o]), (jot_voc[p] + '-' + ipa_jot + '-' + ipa_jot_voc[o]))
 
-        for q in range(1, len(ipa_hard_voc)):
+        for q in range(0, len(ipa_hard_voc)):
             word = word.replace((ipa_hard_voc[q] + '-' + jot_voc[o]), (ipa_hard_voc[q] + '-' + ipa_jot + '-' + ipa_jot_voc[o]))
+
+        word = word.replace((er + '-' + jot_voc[o]), ipa_jot_voc[o])
+        word = word.replace((erj + '-' + jot_voc[o]), ipa_jot_voc[o])
 
         word = word.replace((ipa_soft_voc + '-' + jot_voc[o]), (ipa_soft_voc + '-' + ipa_jot + '-' + ipa_jot_voc[o]))
 
+        word = word.replace((www + '-' + jot_voc[o]), (ipa_w + '-' + ipa_jot_voc[o]))
+        word = word.replace(www, ipa_w)
+        # прописать условия для разных статусов В
 
-    for r in range(1, len(mutable_sonorant)):
-        word = word.replace(mutable_sonorant[r], ipa_mutable_sonorant[r])
-        if ('O-' + ipa_mutable_sonorant[r] + '-O'):
-            word_syl = word.replace(('O-' + ipa_mutable_sonorant[r] + '-O'), ('O-' + ipa_mutable_sonorant[r] + 'ə' + '-O'))
+        for r in range(0, len(mutable_sonorant)):
+            word = word.replace((mutable_sonorant[r] + '-' + jot_voc[o]), (ipa_mutable_sonorant[r] + '-' + ipa_jot_voc[o]))
+            word = word.replace(mutable_sonorant[r], ipa_mutable_sonorant[r])
 
-    #if '' in word:
-    #    word = word.replace('', '')
+        # В ТАКОМ СЛУЧАЕ НУЖНО ПИСАТЬ ТАКИ РЕГУЛЯРКИ ДЛЯ ОБС НАЧАЛА И КОНЦА СЛОВ
+            if ('O-' + ipa_mutable_sonorant[r] + '-O'):
+                word_syl = word.replace(('O-' + ipa_mutable_sonorant[r] + '-O'), ('O-' + ipa_mutable_sonorant[r] + 'ə' + '-O'))
 
-    #for a in range(1, len(jot_voc)):
-    #    if ('O-' + jot_voc[a]) in word:
-    #        print(word)
+        if 'ь' in word:
+            print(word)
 
+    #print(word)
+    #print(word_syl)
 
-    print(word)
+    #return word
 
-    print(word_syl)
-
-
+# main function
 def M_1():
 
     f_name = 'lexemes_russian.tsv'
@@ -152,8 +160,6 @@ def M_1():
         #print(elem_let)
         elem_ipa = 'xz'
         F_transposer(elem_let)
-
-
 
 
 M_1()
