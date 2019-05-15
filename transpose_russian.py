@@ -95,6 +95,7 @@ def F_transposer(word):
 
     word = word.replace(jot, ipa_jot)
     word = word.replace(soft_voc, ipa_soft_voc)
+    word = word.replace('в', 'W')
 
     for k in range(1, (len(jot_voc))):
         word = word.replace(('O-' + jot_voc[k]), ('O-' + ipa_hard_voc[k]))
@@ -116,6 +117,12 @@ def F_transposer(word):
             word = word.replace((ipa_hard_voc[q] + '-' + jot_voc[o]), (ipa_hard_voc[q] + '-' + ipa_jot + '-' + ipa_jot_voc[o]))
 
         word = word.replace((ipa_soft_voc + '-' + jot_voc[o]), (ipa_soft_voc + '-' + ipa_jot + '-' + ipa_jot_voc[o]))
+
+
+    for r in range(1, len(mutable_sonorant)):
+        word = word.replace(mutable_sonorant[r], ipa_mutable_sonorant[r])
+        if ('O-' + ipa_mutable_sonorant[r] + '-O'):
+            word_syl = word.replace('O-' + ipa_mutable_sonorant[r] + '-O')
 
     #if '' in word:
     #    word = word.replace('', '')
