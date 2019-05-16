@@ -53,7 +53,7 @@ The rules order:
   - IN ALL POSITIONS *(fricative vs approximant)* 
 - "jot-"vowels: 
   - following obstruents to > ***V*** 
-	- following *ъ* to > ***J-V*** 
+  - following *ъ* to > ***J-V*** 
   - following *ь* to > ***J-V***
   - following vowel to > ***V-J-V*** 
   - and then: all jot-vowels left to > ***V*** 
