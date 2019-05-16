@@ -113,31 +113,42 @@ def F_tr(word):
         if erj in word:
             word = word.replace(('-' + erj), '')
 
-    print(word)
-
+    #print(word)
     return word
+
+# ещё один костыль
+def F_2(lexeme):
+    #for elem in df['lexemes']:
+    elem_1 = lexeme.replace('-', '_')
+    elem_low = elem_1.lower()
+    # print(elem_low)
+    elem_let = F_lettering(elem_low)
+    # print(elem_let)
+    elem_ipa = F_tr(elem_let)
+
+    return elem_ipa
 
 # main function
 def M_1():
 
-    f_name = 'lexemes_russian.tsv'
-    #f_name = 'wordforms_russian.tsv'
+    #f_name = 'lexemes_russian.tsv'
+    f_name = 'wordforms_russian.tsv'
     f2_name = 'ipa_' + f_name
 
     #df = pd.read_csv(f_name, sep='\t', usecols=['lexemes'])
-    df = pd.read_csv(f_name, sep='\t', usecols=['lexemes'], nrows = 7707)
+    df = pd.read_csv(f_name, sep='\t', usecols=['wordform'])
 
-    for elem in df['lexemes']:
-        elem_1 = elem.replace('-', '_')
-        elem_low = elem_1.lower()
-        #print(elem_low)
-        elem_let = F_lettering(elem_low)
-        #print(elem_let)
-        elem_ipa = F_tr(elem_let)
+    #df = pd.read_csv(f_name, sep='\t', usecols=['lexemes'], nrows = 7707)
 
-    df_2 = ??
+    df_2 = pd.DataFrame(columns = ['ipa_russian'])
 
-    df_2.pd.to_csv(f2_name, columns = ['ipa_russian'], sep='\t', encoding='utf-8', index=False)
+    #df['lexemes'] = df['lexemes'].apply(F_2)
+    df['wordform'] = df['wordform'].apply(F_2)
+
+    #df = df.rename(columns = {'lexemes': 'ipa_russian'})
+    df = df.rename(columns = {'wordform': 'ipa_russian'})
+
+    df.to_csv(f2_name, columns = ['ipa_russian'], sep='\t', encoding='utf-8', index=False)
 
 
 M_1()
