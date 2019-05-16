@@ -32,125 +32,100 @@ def F_lettering(word):
     return lettering
 
 # тут должно транскрибироваться; на вход разбитое по символам слово
-def F_transposer(word):
-    #olala
+def F_tr(word):
 
     hard_immut = ['ш', 'ж', 'ц']
-    ipa_hard_immut = ['O', 'O', 'O']
-
     soft_immut = ['щ', 'ч']
-    ipa_soft_immut = ['O', 'O']
-
     mutable_obstr = ['п', 'б', 'т', 'д', 'к', 'г', 'ф', 'с', 'з', 'х']
-    ipa_mutable_obstr = ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']
 
     mutable_sonorant = ['м', 'н', 'л', 'р']
     ipa_mutable_sonorant = ['N', 'N', 'L', 'R']
 
     hard_voc = ['а', 'о', 'у', 'э', 'ы']
-    ipa_hard_voc = ['A', 'Ɔ', 'U', 'Ɛ', 'Y']
-
     jot_voc = ['я', 'ё', 'ю', 'е']
-    ipa_jot_voc = ['A', 'Ɔ', 'U', 'E']
 
-    soft_voc = 'и'
-    ipa_soft_voc = 'I'
-
-    www = 'в'
-    ipa_w = 'W'
-
-    jot = 'й'
-    ipa_jot = 'J'
+    ii = 'I'
+    ww = 'W'
 
     er = 'ъ'
     erj = 'ь'
 
-    # печатает слова с оригинальным '-'
-    #if '_' in word:
-    #    print(word)
+    voc = 'V'
+    obstr = 'O'
+    jot = 'J'
 
-    # печатает слова с ъ/ь после hard immutable
-    #for a in range (1, 3):
-        #if (hard_immut[a] + '-ь') in word:
-            #print(word)
 
-    # печатает слова с й перед йотированным гласным
-    #for a in range (1, len(jot_voc)):
-    #    if ('-й-' + jot_voc[a]) in word:
-    #        print(word)
+    for element in hard_voc:
+        if element in word:
+            word = word.replace(element, voc)
 
-    # use replace не sub !!!!!
-    for element in word:
+    for elemen in hard_immut:
+        if elemen in word:
+            word = word.replace(elemen, obstr)
 
-        for n in range(0, (len(hard_voc))):
-            if hard_voc[n] == element:
-                #print(hard_voc[m])
-                word = word.replace(hard_voc[n], ipa_hard_voc[n])
-                #print(word)
+    for eleme in soft_immut:
+        if eleme in word:
+            word = word.replace(eleme, obstr)
 
-        for i in range(0, (len(hard_immut))):
-            if hard_immut[i] == element:
-                word = word.replace(hard_immut[i], ipa_hard_immut[i])
+    for elem in mutable_obstr:
+        if elem in word:
+            word = word.replace(elem, obstr)
 
-        for j in range(0, (len(soft_immut))):
-            if soft_immut[j] == element:
-                word = word.replace(soft_immut[j], ipa_soft_immut[j])
+    for i in range (0, len(mutable_sonorant)):
+        if mutable_sonorant[i] in word:
+            word = word.replace(mutable_sonorant[i], ipa_mutable_sonorant[i])
 
-    word = word.replace(jot, ipa_jot)
-    word = word.replace(soft_voc, ipa_soft_voc)
+    if 'й' in word:
+        word = word.replace('й', jot)
 
-    for k in range(0, (len(jot_voc))):
-        word = word.replace(('O-' + jot_voc[k]), ('O-' + ipa_hard_voc[k]))
+    if 'и' in word:
+        word = word.replace('и', ii)
 
-    for elem in word:
-        for l in range(0, (len(mutable_obstr))):
-            if mutable_obstr[l] == elem:
-                word = word.replace(mutable_obstr[l], ipa_mutable_obstr[l])
+    if 'в' in word:
+        word = word.replace('в', ww)
+    # И ПРОПИСАТЬ ПРАВИЛА ДЛЯ В
 
-    for m in range(0, (len(jot_voc))):
-        word = word.replace(('O-' + jot_voc[m]), ('O-' + ipa_jot_voc[m]))
+    for el in jot_voc:
 
-    #print(word)
-    for o in range(0, len(jot_voc)):
+        crutch_1 = obstr + '-' + el
+        crutch_2 = obstr + '-' + voc
+        if crutch_1 in word:
+            word = word.replace(crutch_1, crutch_2)
 
-        for p in range(0, (len(jot_voc))):
-            word = word.replace((jot_voc[p] + '-' + jot_voc[o]), (jot_voc[p] + '-' + ipa_jot + '-' + ipa_jot_voc[o]))
+        crutch_3 = er + '-' + el
+        crutch_4 = jot + '-' + voc
+        if crutch_3 in word:
+            word = word.replace(crutch_3, crutch_4)
 
-        for q in range(0, len(ipa_hard_voc)):
-            word = word.replace((ipa_hard_voc[q] + '-' + jot_voc[o]), (ipa_hard_voc[q] + '-' + ipa_jot + '-' + ipa_jot_voc[o]))
+        crutch_5 = erj + '-' + el
+        crutch_6 = jot + '-' + voc
+        if crutch_5 in word:
+            word = word.replace(crutch_5, crutch_6)
 
-        word = word.replace((er + '-' + jot_voc[o]), ipa_jot_voc[o])
-        word = word.replace((erj + '-' + jot_voc[o]), ipa_jot_voc[o])
+        crutch_7 = voc + '-' + el
+        crutch_8 = voc + '-' + jot + '-' + voc
+        if crutch_7 in word:
+            word = word.replace(crutch_7, crutch_8)
 
-        word = word.replace((ipa_soft_voc + '-' + jot_voc[o]), (ipa_soft_voc + '-' + ipa_jot + '-' + ipa_jot_voc[o]))
+        if el in word:
+            word = word.replace(el, voc)
 
-        word = word.replace((www + '-' + jot_voc[o]), (ipa_w + '-' + ipa_jot_voc[o]))
-        word = word.replace(www, ipa_w)
-        # прописать условия для разных статусов В
+        if erj in word:
+            word = word.replace(('-' + erj), '')
 
-        for r in range(0, len(mutable_sonorant)):
-            word = word.replace((mutable_sonorant[r] + '-' + jot_voc[o]), (ipa_mutable_sonorant[r] + '-' + ipa_jot_voc[o]))
-            word = word.replace(mutable_sonorant[r], ipa_mutable_sonorant[r])
+    print(word)
 
-        # В ТАКОМ СЛУЧАЕ НУЖНО ПИСАТЬ ТАКИ РЕГУЛЯРКИ ДЛЯ ОБС НАЧАЛА И КОНЦА СЛОВ
-            if ('O-' + ipa_mutable_sonorant[r] + '-O'):
-                word_syl = word.replace(('O-' + ipa_mutable_sonorant[r] + '-O'), ('O-' + ipa_mutable_sonorant[r] + 'ə' + '-O'))
-
-        if 'ь' in word:
-            print(word)
-
-    #print(word)
-    #print(word_syl)
-
-    #return word
+    return word
 
 # main function
 def M_1():
 
     f_name = 'lexemes_russian.tsv'
-    #f2_name = 'ipa_' + f_name
+    #f_name = 'wordforms_russian.tsv'
+    f2_name = 'ipa_' + f_name
+
     #df = pd.read_csv(f_name, sep='\t', usecols=['lexemes'])
-    df = pd.read_csv(f_name, sep='\t', usecols=['lexemes'], nrows = 777)
+    df = pd.read_csv(f_name, sep='\t', usecols=['lexemes'], nrows = 7707)
 
     for elem in df['lexemes']:
         elem_1 = elem.replace('-', '_')
@@ -158,8 +133,11 @@ def M_1():
         #print(elem_low)
         elem_let = F_lettering(elem_low)
         #print(elem_let)
-        elem_ipa = 'xz'
-        F_transposer(elem_let)
+        elem_ipa = F_tr(elem_let)
+
+    df_2 = ??
+
+    df_2.pd.to_csv(f2_name, columns = ['ipa_russian'], sep='\t', encoding='utf-8', index=False)
 
 
 M_1()
