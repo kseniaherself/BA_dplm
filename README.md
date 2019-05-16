@@ -57,7 +57,7 @@ The rules order:
   - following *ь* to > ***J-V***
   - following vowel to > ***V-J-V*** 
   - and then: all jot-vowels left to > ***V*** 
-- all other *ь* left > '' 
+- all other *ь* left > 'ø' 
 
 
 
