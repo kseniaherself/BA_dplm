@@ -47,10 +47,10 @@ The rules order:
   - lateral approximant to ***L*** 
   - nasal stops to ***N*** 
 - jot to > ***J*** 
-  - IN ALL POSITIONS *(fricative vs approximant)* 
+    - IN ALL POSITIONS *(fricative vs approximant)* 
 - *и* to > ***I*** 
 - *в* to > ***W*** 
-  - IN ALL POSITIONS *(fricative vs approximant)* 
+    - IN ALL POSITIONS *(fricative vs approximant)* 
 - "jot-"vowels: 
   - following obstruents to > ***V*** 
   - following *ъ* to > ***J-V*** 
