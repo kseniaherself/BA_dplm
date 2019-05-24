@@ -18,9 +18,13 @@ which transpone *tr_data* into *O-S.assoc* and outputs frequency distribution of
 The program excludes abbreviations, conjunction, compounds, words including '’' (*д’тка*, *д’такње*), '-' (А-бомба, алфа-честичка). It replaces *!* 
 
 #### transcriber_macedonian .py 
-*transcriber_macedonian .py* transcribes macedonian words from *words_macedonian .txt* to *ipa_words_macedonian .txt*. 
+*transcriber_macedonian .py* transcribes macedonian words from *words_macedonian .txt* to *words_macedonian_IPA .txt*. 
 
 Words are presented as sound-sound-... . 
+
+#### transposer_macedonian .py 
+*transposer_macedonian .py* transposes macedonian transcribed words to the expected type to *ipa_lexemes_macedonian .tsv*
+
 
 #### transpose_russian .py 
 *transpose_russian .py* transposes russian words from 
@@ -62,3 +66,24 @@ The rules order:
 
 
 ### programs_2 
+#### analysis_ 1.py 
+*analysis_1 .py* creates: 
+- lists of monosyllabic words for each language: 
+  - *monosyllabic_russian_lexemes .tsv* and *monosyllabic_russian_wordforms .tsv* for Russian 
+  - *monosyllabic_macedonian_lexemes .tsv* 
+  - *monosyllabic_polish_wordforms .tsv* 
+- lists of absolute onsets and codas of monosyllabic words: 
+  - *lists*
+- lists of absolute onsets and codas of all words: 
+  - *lists*
+- tables: word | number of syllables | onset | coda 
+  - *tables* 
+- tables of absolute onsets and codas and nubmer of its appearance: sequence | frequency (=number of appearance) 
+  - *frequency_(type)_(language)_(type of words) .tsv*
+
+
+
+
+
+
+
