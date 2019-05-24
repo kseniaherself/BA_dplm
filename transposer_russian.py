@@ -151,6 +151,34 @@ def M_1():
     df.to_csv(f2_name, columns = ['ipa_russian'], sep='\t', encoding='utf-8', index=False)
 
 
-M_1()
+def M_2():
+    #f = open('ipa_lexemes_russian.tsv')
+    f = open('prep_ipa_wordforms_russian.tsv')
+
+    f_l = f.readlines()
+    f_l = f_l[1:]
+
+    #f_norm = open('ipa_lexemes_russian.tsv', 'w')
+    f_norm = open('ipa_wordforms_russian.tsv', 'w')
+
+    f_norm.write('ipa_russian' + '\n')
+
+    for line in f_l:
+        if 'I' in line:
+            line = line.replace('I', 'V')
+
+        if '_-' in line:
+            line = line.replace('_-', '')
+
+        if 'V' in line:
+            f_norm.write(line)
+        #    print(line)
+
+
+    f_norm.close()
+
+#M_1()
+
+M_2()
 
 print("--- %s seconds ---" % (time.time() - start_time))
