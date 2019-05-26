@@ -6,6 +6,46 @@ import operator
 import time
 start_time = time.time()
 
+# перевод всего в O-S
+def M_0():
+    #f = open('ipa_lexemes_russian.tsv')
+    #f = open('ipa_wordforms_russian.tsv')
+    #f = open('ipa_lexemes_macedonian.tsv')
+    f = open('ipa_wordforms_polish.tsv')
+
+    f_lines = f.readlines()
+    f_lines = f_lines[1:]
+
+    #f_norm = open('qual_lexemes_russian.tsv', 'w')
+    #f_norm = open('qual_ipa_wordforms_russian.tsv', 'w')
+    #f_norm = open('qual_ipa_lexemes_macedonian.tsv', 'w')
+    f_norm = open('qual_ipa_wordforms_polish.tsv', 'w')
+
+    #f_norm.write('quality_russian_lexemes' + '\n')
+    #f_norm.write('quality_russian_wordforms' + '\n')
+    #f_norm.write('quality_macedonian_lexemes' + '\n')
+    f_norm.write('quality_polish_wordforms' + '\n')
+
+    son = 'S'
+    obs = 'O'
+
+    for line in f_lines:
+        for elem in line:
+            if elem == 'R':
+                line = line.replace('R', son)
+            if elem == 'N':
+                line = line.replace('N', son)
+            if elem == 'J':
+                line = line.replace('J', son)
+            if elem == 'L':
+                line = line.replace('L', son)
+            if elem == 'W':
+                line = line.replace('W', obs)
+
+        f_norm.write(line)
+
+    f_norm.close()
+
 # делает списки односложных слов
 def M_1():
 
@@ -311,6 +351,47 @@ def M_5():
     F_sort_wd_items(onsets_dict, 'onset_polish_wordforms')
     F_sort_wd_items(codas_dict, 'coda_polish_wordforms')
 
+# должна считать вероятность и сравнивать
+def M_6():
+    f_name = ('frequency_onset_russian_lexemes.tsv')
+    # f_name = ('frequency_coda_russian_lexemes.tsv')
+
+    # f_name = ('frequency_onset_russian_wordforms.tsv')
+    # f_name = ('frequency_coda_russian_wordforms.tsv')
+
+    # f_name = ('frequency_onset_macedonian_lexemes.tsv')
+    # f_name = ('frequency_coda_macedonian_lexemes.tsv')
+
+    # f_name = ('frequency_onset_polish_wordforms.tsv')
+    # f_name = ('frequency_coda_polish_wordforms.tsv')
+
+    f = open(f_name)
+    f_lines = f.readlines()
+    f_lines = f_lines[1:]
+
+    total_app = 0
+    lines = []
+
+    for line in f_lines:
+        line = re.sub('\n', '', line)
+        line = line.split('\t')
+        lines.append(line)
+        total_app = total_app + int(line[1])
+
+    print(total_app)
+
+    f_name_upd = 'probability_' + f_name
+    first_line = f_lines[0]
+    first_line = re.sub('\n', '', first_line)
+
+    #f_bt = open(f_name_upd, 'w')
+    #f_bt.write(first_line + '\t' + 'probability' + '\n')
+
+    for lin in lines:
+        prob = round((int(lin[1]))/total_app, 25)
+        print(prob)
+
+#M_0()
 
 #M_1()
 
@@ -320,6 +401,8 @@ def M_5():
 
 #M_4()
 
-M_5()
+#M_5()
+
+#M_6()
 
 print("--- %s seconds ---" % (time.time() - start_time))
