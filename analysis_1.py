@@ -16,7 +16,7 @@ def M_0():
     f_lines = f.readlines()
     f_lines = f_lines[1:]
 
-    #f_norm = open('qual_lexemes_russian.tsv', 'w')
+    #f_norm = open('qual_ipa_lexemes_russian.tsv', 'w')
     #f_norm = open('qual_ipa_wordforms_russian.tsv', 'w')
     #f_norm = open('qual_ipa_lexemes_macedonian.tsv', 'w')
     f_norm = open('qual_ipa_wordforms_polish.tsv', 'w')
@@ -52,7 +52,12 @@ def M_1():
     #f = open('ipa_lexemes_russian.tsv')
     #f = open('ipa_wordforms_russian.tsv')
     #f = open('ipa_lexemes_macedonian.tsv')
-    f = open('ipa_wordforms_polish.tsv')
+    #f = open('ipa_wordforms_polish.tsv')
+
+    #f = open('qual_ipa_lexemes_russian.tsv')
+    #f = open('qual_ipa_wordforms_russian.tsv')
+    #f = open('qual_ipa_lexemes_macedonian.tsv')
+    f = open('qual_ipa_wordforms_polish.tsv')
 
     f_lines = f.readlines()
     f_lines = f_lines[1:]
@@ -60,12 +65,23 @@ def M_1():
     #f_norm = open('monosyllabic_russian_lexemes.tsv', 'w')
     #f_norm = open('monosyllabic_russian_wordforms.tsv', 'w')
     #f_norm = open('monosyllabic_macedonian_lexemes.tsv', 'w')
-    f_norm = open('monosyllabic_polish_wordforms.tsv', 'w')
+    #f_norm = open('monosyllabic_polish_wordforms.tsv', 'w')
 
     #f_norm.write('monosyllabic_russian_lexemes' + '\n')
     #f_norm.write('monosyllabic_russian_wordforms' + '\n')
     #f_norm.write('monosyllabic_macedonian_lexemes' + '\n')
-    f_norm.write('monosyllabic_polish_wordforms' + '\n')
+    #f_norm.write('monosyllabic_polish_wordforms' + '\n')
+
+
+    #f_norm = open('qual_monosyllabic_russian_lexemes.tsv', 'w')
+    #f_norm = open('qual_monosyllabic_russian_wordforms.tsv', 'w')
+    #f_norm = open('qual_monosyllabic_macedonian_lexemes.tsv', 'w')
+    f_norm = open('qual_monosyllabic_polish_wordforms.tsv', 'w')
+
+    #f_norm.write('quality_monosyllabic_russian_lexemes' + '\n')
+    #f_norm.write('quality_monosyllabic_russian_wordforms' + '\n')
+    #f_norm.write('quality_monosyllabic_macedonian_lexemes' + '\n')
+    f_norm.write('quality_monosyllabic_polish_wordforms' + '\n')
 
     for line in f_lines:
         i = 0
@@ -87,7 +103,12 @@ def M_2():
     #f = open('monosyllabic_russian_lexemes.tsv')
     #f = open('monosyllabic_russian_wordforms.tsv')
     #f = open('monosyllabic_macedonian_lexemes.tsv')
-    f = open('monosyllabic_polish_wordforms.tsv')
+    #f = open('monosyllabic_polish_wordforms.tsv')
+
+    #f = open('qual_monosyllabic_russian_lexemes.tsv')
+    #f = open('qual_monosyllabic_russian_wordforms.tsv')
+    #f = open('qual_monosyllabic_macedonian_lexemes.tsv')
+    f = open('qual_monosyllabic_polish_wordforms.tsv')
 
     f_lines = f.readlines()
     f_lines = f_lines[1:]  # РАБОЧАЯ ВЕРСИЯ ДЛЯ ВСЕХ СЛОВ
@@ -114,11 +135,41 @@ def M_2():
     #f_fin.write('monosyllabic_codas_macedonian_lexemes' + '\n')
 
 
-    f_init = open('monosyllabic_onsets_polish_wordforms.tsv', 'w')
-    f_init.write('monosyllabic_onsets_polish_wordforms' + '\n')
+    #f_init = open('monosyllabic_onsets_polish_wordforms.tsv', 'w')
+    #f_init.write('monosyllabic_onsets_polish_wordforms' + '\n')
 
-    f_fin = open('monosyllabic_codas_polish_wordforms.tsv', 'w')
-    f_fin.write('monosyllabic_codas_polish_wordforms' + '\n')
+    #f_fin = open('monosyllabic_codas_polish_wordforms.tsv', 'w')
+    #f_fin.write('monosyllabic_codas_polish_wordforms' + '\n')
+
+
+    # ПУСТАЯ СТРОКА
+
+    #f_init = open('qual_monosyllabic_onsets_russian_lexemes.tsv', 'w')
+    #f_init.write('quality_monosyllabic_onsets_russian_lexemes' + '\n')
+
+    #f_fin = open('qual_monosyllabic_codas_russian_lexemes.tsv', 'w')
+    #f_fin.write('quality_monosyllabic_codas_russian_lexemes' + '\n')
+
+
+    #f_init = open('qual_monosyllabic_onsets_russian_wordforms.tsv', 'w')
+    #f_init.write('quality_monosyllabic_onsets_russian_wordforms' + '\n')
+
+    #f_fin = open('qual_monosyllabic_codas_russian_wordforms.tsv', 'w')
+    #f_fin.write('quality_monosyllabic_codas_russian_wordforms' + '\n')
+
+
+    #f_init = open('qual_monosyllabic_onsets_macedonian_lexemes.tsv', 'w')
+    #f_init.write('quality_monosyllabic_onsets_macedonian_lexemes' + '\n')
+
+    #f_fin = open('qual_monosyllabic_codas_macedonian_lexemes.tsv', 'w')
+    #f_fin.write('quality_monosyllabic_codas_macedonian_lexemes' + '\n')
+
+
+    f_init = open('qual_monosyllabic_onsets_polish_wordforms.tsv', 'w')
+    f_init.write('quality_monosyllabic_onsets_polish_wordforms' + '\n')
+
+    f_fin = open('qual_monosyllabic_codas_polish_wordforms.tsv', 'w')
+    f_fin.write('quality_monosyllabic_codas_polish_wordforms' + '\n')
 
 
     onset = 'V'
@@ -391,11 +442,34 @@ def M_6():
         prob = round((int(lin[1]))/total_app, 25)
         print(prob)
 
+# сделаем сбор интервокальных кластеров и проверим их
+def M_7():
+    f_init = ('monosyllabic_onsets_russian_lexemes.tsv')
+    f_fin = ('monosyllabic_codas_russian_lexemes.tsv')
+
+    f_i = open(f_init)
+    f_f = open(f_fin)
+
+    f_i_l = f_i.readlines()
+    f_f_l = f_f.readlines()
+
+    f_i_l = f_i_l[1:]
+    f_f_l = f_f_l[1:]
+
+    intv = []
+    for i in range(0, len(f_i_l)):
+        for j in range(0, len(f_f_l)):
+            print(i+j)
+
+
+
+
+
 #M_0()
 
 #M_1()
 
-#M_2()
+M_2()
 
 #M_3()
 
@@ -404,5 +478,7 @@ def M_6():
 #M_5()
 
 #M_6()
+
+#M_7()
 
 print("--- %s seconds ---" % (time.time() - start_time))
