@@ -51,37 +51,38 @@ def F_4(word):
 # основная функция
 def M_1():
     #f_name = ('ipa_lexemes_russian.tsv')
-    f_name = ('ipa_wordforms_russian.tsv')
+    #f_name = ('ipa_wordforms_russian.tsv')
     #f_name = ('ipa_lexemes_macedonian.tsv')
-    #f_name = ('ipa_wordforms_polish.tsv')
+    f_name = ('ipa_wordforms_polish.tsv')
+
     f2_name = 'bt_' + f_name
 
-    df = pd.read_csv(f_name, sep='\t', usecols=['ipa_russian'])
-    # df = pd.read_csv(f_name, sep='\t', usecols=['ipa_macedonian'])
-    # df = pd.read_csv(f_name, sep='\t', usecols=['ipa_polish'])
+    #df = pd.read_csv(f_name, sep='\t', usecols=['ipa_russian'])
+    #df = pd.read_csv(f_name, sep='\t', usecols=['ipa_macedonian'])
+    df = pd.read_csv(f_name, sep='\t', usecols=['ipa_polish'])
 
     # df = pd.read_csv(f_name, sep='\t', usecols=['ipa_russian'], nrows = 7707)
     # df = pd.read_csv(f_name, sep='\t', usecols=['ipa_macedonian'], nrows = 817)
     # df = pd.read_csv(f_name, sep='\t', usecols=['ipa_polish'], nrows = 2384)
 
     # переименовывает колонки
-    df = df.rename(columns={'ipa_russian': 'word_q1'})
-    # df = df.rename(columns = {'ipa_macedonian': 'word_q1'})
-    # df = df.rename(columns = {'ipa_polish': 'word_q1'})
+    #df = df.rename(columns={'ipa_russian': 'word_q1'})
+    #df = df.rename(columns = {'ipa_macedonian': 'word_q1'})
+    df = df.rename(columns = {'ipa_polish': 'word_q1'})
 
 
     #f_name_orth = 'lexemes_russian.tsv'
-    f_name_orth = 'wordforms_russian.tsv'
+    #f_name_orth = 'wordforms_russian.tsv'
     #f_name_orth = 'lexemes_macedonian.tsv'
-    #f_name_orth = 'wordforms_polish.tsv'
+    f_name_orth = 'wordforms_polish.tsv'
 
     #df_o = pd.read_csv(f_name_orth, sep='\t', usecols=['lexemes'])       # русский
     df_o = pd.read_csv(f_name_orth, sep='\t', usecols=['wordform'])      # русский и польский
     #df_o = pd.read_csv(f_name_orth, sep='\t', usecols=['dict_entry'])    # македонский
 
-    #df_o = df_o.rename(columns={'lexemes': 'word_ortho'})
-    df_o = df_o.rename(columns = {'wordform': 'word_ortho'})
-    # df_o = df_o.rename(columns = {'dict_entry': 'word_ortho'})
+    #df_o = df_o.rename(columns={'lexemes': 'word_ortho'})          # русский
+    df_o = df_o.rename(columns = {'wordform': 'word_ortho'})       # русский и польский
+    #df_o = df_o.rename(columns = {'dict_entry': 'word_ortho'})    # македонский
 
 
     df['word_ortho'] = df_o['word_ortho']
@@ -112,10 +113,13 @@ def M_1():
 #M_1()
 
 #f = open('bt_ipa_lexemes_russian.tsv')
-f = open('bt_ipa_wordforms_russian.tsv')
+#f = open('bt_ipa_wordforms_russian.tsv')
+#f = open('bt_ipa_lexemes_macedonian.tsv')
+f = open('bt_ipa_wordforms_polish.tsv')
 
 f_lines = f.readlines()
+f.close()
 #print(f_lines[-1])
-print(f_lines[4596003])
+print(f_lines[7967210])
 
 print("--- %s seconds ---" % (time.time() - start_time))
