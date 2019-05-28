@@ -33,6 +33,7 @@ def F_lettering(word):
 
 # тут должно транскрибироваться; на вход разбитое по символам слово
 def F_tr(word):
+    #print(word)
 
     hard_immut = ['ш', 'ж', 'ц']
     soft_immut = ['щ', 'ч']
@@ -88,64 +89,134 @@ def F_tr(word):
     if '_-' in word:
         word = word.replace('_-', '')
 
-    for el in jot_voc:
+    # йот-гласный + йот-гласный + йот-гласный
 
-        crutch_1 = obstr + '-' + el
-        crutch_2 = obstr + '-' + voc
-        if crutch_1 in word:
-            word = word.replace(crutch_1, crutch_2)
+    # йот-гласный + йот-гласный
+    word = word.replace('я-я', 'я-J-V')
+    word = word.replace('я-ё', 'я-J-V')
+    word = word.replace('я-ю', 'я-J-V')
+    word = word.replace('я-е', 'я-J-V')
 
-        crutch_3 = er + '-' + el
-        crutch_4 = jot + '-' + voc
-        if crutch_3 in word:
-            word = word.replace(crutch_3, crutch_4)
+    word = word.replace('ё-я', 'ё-J-V')
+    word = word.replace('ё-ё', 'ё-J-V')
+    word = word.replace('ё-ю', 'ё-J-V')
+    word = word.replace('ё-е', 'ё-J-V')
 
-        crutch_5 = erj + '-' + el
-        crutch_6 = jot + '-' + voc
-        if crutch_5 in word:
-            word = word.replace(crutch_5, crutch_6)
+    word = word.replace('ю-я', 'ю-J-V')
+    word = word.replace('ю-ё', 'ю-J-V')
+    word = word.replace('ю-ю', 'ю-J-V')
+    word = word.replace('ю-е', 'ю-J-V')
 
-        crutch_7 = voc + '-' + el
-        crutch_8 = voc + '-' + jot + '-' + voc
-        if crutch_7 in word:
-            word = word.replace(crutch_7, crutch_8)
+    word = word.replace('е-я', 'е-J-V')
+    word = word.replace('е-ё', 'е-J-V')
+    word = word.replace('е-ю', 'е-J-V')
+    word = word.replace('е-е', 'е-J-V')
 
-        crutch_9 = jot + '-' + el
-        crutch_10 = jot + '-' + voc
-        for crutch_9 in word:
-            word = word.replace(crutch_9, crutch_10)
+    # шумный + йот-гласный
+    word = word.replace('O-я', 'O-V')
+    word = word.replace('O-ё', 'O-V')
+    word = word.replace('O-ю', 'O-V')
+    word = word.replace('O-е', 'O-V')
 
-        for v in jot_voc:
+    # р + йот-гласный
+    word = word.replace('R-я', 'R-V')
+    word = word.replace('R-ё', 'R-V')
+    word = word.replace('R-ю', 'R-V')
+    word = word.replace('R-е', 'R-V')
 
-            for vv in jot_voc:
+    # л + йот-гласный
+    word = word.replace('L-я', 'L-V')
+    word = word.replace('L-ё', 'L-V')
+    word = word.replace('L-ю', 'L-V')
+    word = word.replace('L-е', 'L-V')
 
-                crutch_11 = el + '-' + v + '-' + vv
-                crutch_12 = el + '-' + jot + '-' + voc + jot + '-' + voc
-                if crutch_11 in word:
-                    word = word.replace(crutch_11, crutch_12)
+    # носовой + йот-гласный
+    word = word.replace('N-я', 'N-V')
+    word = word.replace('N-ё', 'N-V')
+    word = word.replace('N-ю', 'N-V')
+    word = word.replace('N-е', 'N-V')
 
-            crutch_13 = el + '-' + v
-            crutch_14 = el + '-' + jot + '-' + voc
-            if crutch_13 in word:
-                word = word.replace(crutch_13, crutch_14)
+    # гласный + йот-гласный
+    word = word.replace('V-я', 'V-J-V')
+    word = word.replace('V-ё', 'V-J-V')
+    word = word.replace('V-ю', 'V-J-V')
+    word = word.replace('V-е', 'V-J-V')
 
-        for s in ipa_mutable_sonorant:
-            crutch_15 = s + '-' + el
-            crutch_16 = s + '-' + voc
-            if crutch_15 in word:
-                #print(word)
-                word = word.replace(crutch_15, crutch_16)
+    # йот + йот-гласный
+    word = word.replace('J-я', 'J-V')
+    word = word.replace('J-ё', 'J-V')
+    word = word.replace('J-ю', 'J-V')
+    word = word.replace('J-е', 'J-V')
+
+    # тв знак + йот-глансый
+    word = word.replace('ъ-я', 'J-V')
+    word = word.replace('ъ-ё', 'J-V')
+    word = word.replace('ъ-ю', 'J-V')
+    word = word.replace('ъ-е', 'J-V')
+
+    # мягк знак + йот-гласный
+    word = word.replace('ь-я', 'J-V')
+    word = word.replace('ь-ё', 'J-V')
+    word = word.replace('ь-ю', 'J-V')
+    word = word.replace('ь-е', 'J-V')
+
+    word = word.replace('я', 'J-V')
+    word = word.replace('ё', 'J-V')
+    word = word.replace('ю', 'J-V')
+    word = word.replace('е', 'J-V')
 
 
-    for vocfd in jot_voc:
-        if vocfd in word:
-        #   print(el)
-            print(word)
+    #       for el in jot_voc:
 
-            #word = word.replace(el, voc)
+        #crutch_1 = obstr + '-' + el
+        #crutch_2 = obstr + '-' + voc
+        #if crutch_1 in word:
+        #    word = word.replace(crutch_1, crutch_2)
 
-        #if erj in word:
-        #    word = word.replace(('-' + erj), '')
+        #crutch_3 = er + '-' + el
+        #crutch_4 = jot + '-' + voc
+        #if crutch_3 in word:
+        #    word = word.replace(crutch_3, crutch_4)
+
+        #crutch_5 = erj + '-' + el
+        #crutch_6 = jot + '-' + voc
+        #if crutch_5 in word:
+        #    word = word.replace(crutch_5, crutch_6)
+
+        #crutch_7 = voc + '-' + el
+        #crutch_8 = voc + '-' + jot + '-' + voc
+        #if crutch_7 in word:
+        #    word = word.replace(crutch_7, crutch_8)
+
+        #crutch_9 = jot + '-' + el
+        #crutch_10 = jot + '-' + voc
+        #for crutch_9 in word:
+        #    word = word.replace(crutch_9, crutch_10)
+
+    #    for v in jot_voc:
+
+    #        for vv in jot_voc:
+
+    #            crutch_11 = el + '-' + v + '-' + vv
+    #            crutch_12 = el + '-' + jot + '-' + voc + jot + '-' + voc
+    #            if crutch_11 in word:
+    #                word = word.replace(crutch_11, crutch_12)
+
+    #        crutch_13 = el + '-' + v
+    #        crutch_14 = el + '-' + jot + '-' + voc
+    #        if crutch_13 in word:
+    #            word = word.replace(crutch_13, crutch_14)
+
+        #for s in ipa_mutable_sonorant:
+        #    crutch_15 = s + '-' + el
+        #    crutch_16 = s + '-' + voc
+        #    if crutch_15 in word:
+        #        word = word.replace(crutch_15, crutch_16)
+
+        #word = word.replace(el, voc)
+
+    if erj in word:
+        word = word.replace(('-' + erj), '')
 
     #print(word)
     return word
@@ -165,26 +236,26 @@ def F_2(lexeme):
 # main function
 def M_1():
 
-    #f_name = 'lexemes_russian.tsv'
-    f_name = 'wordforms_russian.tsv'
+    f_name = 'lexemes_russian.tsv'
+    #f_name = 'wordforms_russian.tsv'
     f2_name = 'ipa_' + f_name
 
-    #df = pd.read_csv(f_name, sep='\t', usecols=['lexemes'])
-    df = pd.read_csv(f_name, sep='\t', usecols=['wordform'])
+    df = pd.read_csv(f_name, sep='\t', usecols=['lexemes'])
+    #df = pd.read_csv(f_name, sep='\t', usecols=['wordform'])
 
     #df = pd.read_csv(f_name, sep='\t', usecols=['lexemes'], nrows = 7707)
 
     df_2 = pd.DataFrame(columns = ['ipa_russian'])
 
-    #df['lexemes'] = df['lexemes'].apply(F_2)
-    df['wordform'] = df['wordform'].apply(F_2)
+    df['lexemes'] = df['lexemes'].apply(F_2)
+    #df['wordform'] = df['wordform'].apply(F_2)
 
-    #df = df.rename(columns = {'lexemes': 'ipa_russian'})
-    df = df.rename(columns = {'wordform': 'ipa_russian'})
+    df = df.rename(columns = {'lexemes': 'ipa_russian'})
+    #df = df.rename(columns = {'wordform': 'ipa_russian'})
 
-    #df.to_csv(f2_name, columns = ['ipa_russian'], sep='\t', encoding='utf-8', index=False)
+    df.to_csv(f2_name, columns = ['ipa_russian'], sep='\t', encoding='utf-8', index=False)
 
-
+# убирает строки без гласных
 def M_2():
     f = open('prep_ipa_lexemes_russian.tsv')
     #f = open('prep_ipa_wordforms_russian.tsv')
