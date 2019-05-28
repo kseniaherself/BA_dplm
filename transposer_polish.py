@@ -44,7 +44,7 @@ def F_tr(word):
     immut_sonorant = ['l', 'ł', 'm', 'n', 'ń', 'r']
     ipa_immut_sonorant = ['L', 'L', 'N', 'N', 'N', 'R']
 
-    simple_voc = ['a', 'o', 'ó', 'u', 'e', 'y', 'ű', 'ö', 'ä', 'ü', 'é']
+    simple_voc = ['a', 'o', 'ó', 'u', 'e', 'y', 'ű', 'ö', 'ä', 'â', 'ü', 'ë', 'é', 'è', 'í', 'í', 'á', 'å']
     # что качается носовых, возможно появление носового элемента
     nasal_voc = ['ą', 'ę']
 
@@ -145,18 +145,18 @@ def M_1():
 # убирает бессложные слова
 def M_2():
 
-    f = open('prep_ipa_wordforms_polish.tsv')
+    f = open('ipa_wordforms_polish.tsv')
     f_l = f.readlines()
 
-    f_norm = open('ipa_wordforms_polish.tsv', 'w')
-    f_norm.write('ipa_polish' + '\n')
+    #f_norm = open('ipa_wordforms_polish.tsv', 'w')
+    #f_norm.write('ipa_polish' + '\n')
 
     for line in f_l:
-        if 'V' in line:
-            f_norm.write(line)
-            #print(line)
+        if 'V' not in line:
+            #f_norm.write(line)
+            print(line)
 
-    f_norm.close()
+    #f_norm.close()
 
 
 #M_1()

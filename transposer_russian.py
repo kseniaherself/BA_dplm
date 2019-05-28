@@ -79,11 +79,14 @@ def F_tr(word):
         word = word.replace('й', jot)
 
     if 'и' in word:
-        word = word.replace('и', ii)
+        word = word.replace('и', voc) #, ii)
 
     if 'в' in word:
-        word = word.replace('в', ww)
+        word = word.replace('в', obstr) #, ww)
     # И ПРОПИСАТЬ ПРАВИЛА ДЛЯ В
+
+    if '_-' in word:
+        word = word.replace('_-', '')
 
     for el in jot_voc:
 
@@ -107,11 +110,27 @@ def F_tr(word):
         if crutch_7 in word:
             word = word.replace(crutch_7, crutch_8)
 
-        if el in word:
-            word = word.replace(el, voc)
+        for v in jot_voc:
+            crutch_9 = el + '-' + v
+            crutch_10 = el + '-' + jot + '-' + voc
+            if crutch_9 in word:
+                word = word.replace(crutch_9, crutch_10)
 
-        if erj in word:
-            word = word.replace(('-' + erj), '')
+        for s in ipa_mutable_sonorant:
+            crutch_11 = s + '-' + el
+            crutch_12 = s + '-' + voc
+            if crutch_11 in word:
+                word = word.replace(crutch_11, crutch_12)
+
+
+        if el in word:
+            print(el)
+            print(word)
+
+            #word = word.replace(el, voc)
+
+        #if erj in word:
+        #    word = word.replace(('-' + erj), '')
 
     #print(word)
     return word
@@ -148,27 +167,30 @@ def M_1():
     #df = df.rename(columns = {'lexemes': 'ipa_russian'})
     df = df.rename(columns = {'wordform': 'ipa_russian'})
 
-    df.to_csv(f2_name, columns = ['ipa_russian'], sep='\t', encoding='utf-8', index=False)
+    #df.to_csv(f2_name, columns = ['ipa_russian'], sep='\t', encoding='utf-8', index=False)
 
 
 def M_2():
-    #f = open('ipa_lexemes_russian.tsv')
-    f = open('prep_ipa_wordforms_russian.tsv')
+    f = open('prep_ipa_lexemes_russian.tsv')
+    #f = open('prep_ipa_wordforms_russian.tsv')
 
     f_l = f.readlines()
     f_l = f_l[1:]
 
-    #f_norm = open('ipa_lexemes_russian.tsv', 'w')
-    f_norm = open('ipa_wordforms_russian.tsv', 'w')
+    f_norm = open('ipa_lexemes_russian.tsv', 'w')
+    #f_norm = open('ipa_wordforms_russian.tsv', 'w')
 
     f_norm.write('ipa_russian' + '\n')
 
     for line in f_l:
-        if 'I' in line:
-            line = line.replace('I', 'V')
+        if 'V' not in line:
+            print(line)
 
-        if '_-' in line:
-            line = line.replace('_-', '')
+        #if 'I' in line:
+        #    line = line.replace('I', 'V')
+
+        #if '_-' in line:
+        #    line = line.replace('_-', '')
 
         if 'V' in line:
             f_norm.write(line)
@@ -177,8 +199,8 @@ def M_2():
 
     f_norm.close()
 
-#M_1()
+M_1()
 
-M_2()
+#M_2()
 
 print("--- %s seconds ---" % (time.time() - start_time))
