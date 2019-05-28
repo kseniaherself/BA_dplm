@@ -9,22 +9,22 @@ start_time = time.time()
 # перевод всего в O-S
 def M_0():
     #f = open('ipa_lexemes_russian.tsv')
-    #f = open('ipa_wordforms_russian.tsv')
+    f = open('ipa_wordforms_russian.tsv')
     #f = open('ipa_lexemes_macedonian.tsv')
-    f = open('ipa_wordforms_polish.tsv')
+    #f = open('ipa_wordforms_polish.tsv')
 
     f_lines = f.readlines()
     f_lines = f_lines[1:]
 
     #f_norm = open('qual_ipa_lexemes_russian.tsv', 'w')
-    #f_norm = open('qual_ipa_wordforms_russian.tsv', 'w')
+    f_norm = open('qual_ipa_wordforms_russian.tsv', 'w')
     #f_norm = open('qual_ipa_lexemes_macedonian.tsv', 'w')
-    f_norm = open('qual_ipa_wordforms_polish.tsv', 'w')
+    #f_norm = open('qual_ipa_wordforms_polish.tsv', 'w')
 
     #f_norm.write('quality_russian_lexemes' + '\n')
-    #f_norm.write('quality_russian_wordforms' + '\n')
+    f_norm.write('quality_russian_wordforms' + '\n')
     #f_norm.write('quality_macedonian_lexemes' + '\n')
-    f_norm.write('quality_polish_wordforms' + '\n')
+    #f_norm.write('quality_polish_wordforms' + '\n')
 
     son = 'S'
     obs = 'O'
@@ -40,7 +40,8 @@ def M_0():
             if elem == 'L':
                 line = line.replace('L', son)
             if elem == 'W':
-                line = line.replace('W', obs)
+                print(line)
+                #line = line.replace('W', obs)
 
         f_norm.write(line)
 
@@ -50,25 +51,25 @@ def M_0():
 def M_1():
 
     #f = open('ipa_lexemes_russian.tsv')
-    #f = open('ipa_wordforms_russian.tsv')
+    f = open('ipa_wordforms_russian.tsv')
     #f = open('ipa_lexemes_macedonian.tsv')
     #f = open('ipa_wordforms_polish.tsv')
 
     #f = open('qual_ipa_lexemes_russian.tsv')
     #f = open('qual_ipa_wordforms_russian.tsv')
     #f = open('qual_ipa_lexemes_macedonian.tsv')
-    f = open('qual_ipa_wordforms_polish.tsv')
+    #f = open('qual_ipa_wordforms_polish.tsv')
 
     f_lines = f.readlines()
     f_lines = f_lines[1:]
 
     #f_norm = open('monosyllabic_russian_lexemes.tsv', 'w')
-    #f_norm = open('monosyllabic_russian_wordforms.tsv', 'w')
+    f_norm = open('monosyllabic_russian_wordforms.tsv', 'w')
     #f_norm = open('monosyllabic_macedonian_lexemes.tsv', 'w')
     #f_norm = open('monosyllabic_polish_wordforms.tsv', 'w')
 
     #f_norm.write('monosyllabic_russian_lexemes' + '\n')
-    #f_norm.write('monosyllabic_russian_wordforms' + '\n')
+    f_norm.write('monosyllabic_russian_wordforms' + '\n')
     #f_norm.write('monosyllabic_macedonian_lexemes' + '\n')
     #f_norm.write('monosyllabic_polish_wordforms' + '\n')
 
@@ -76,12 +77,12 @@ def M_1():
     #f_norm = open('qual_monosyllabic_russian_lexemes.tsv', 'w')
     #f_norm = open('qual_monosyllabic_russian_wordforms.tsv', 'w')
     #f_norm = open('qual_monosyllabic_macedonian_lexemes.tsv', 'w')
-    f_norm = open('qual_monosyllabic_polish_wordforms.tsv', 'w')
+    #f_norm = open('qual_monosyllabic_polish_wordforms.tsv', 'w')
 
     #f_norm.write('quality_monosyllabic_russian_lexemes' + '\n')
     #f_norm.write('quality_monosyllabic_russian_wordforms' + '\n')
     #f_norm.write('quality_monosyllabic_macedonian_lexemes' + '\n')
-    f_norm.write('quality_monosyllabic_polish_wordforms' + '\n')
+    #f_norm.write('quality_monosyllabic_polish_wordforms' + '\n')
 
     for line in f_lines:
         i = 0
@@ -205,7 +206,12 @@ def M_3():
     #f = open('ipa_lexemes_russian.tsv')
     #f = open('ipa_wordforms_russian.tsv')
     #f = open('ipa_lexemes_macedonian.tsv')
-    f = open('ipa_wordforms_polish.tsv')
+    #f = open('ipa_wordforms_polish.tsv')
+
+    #f = open('qual_ipa_lexemes_russian.tsv')
+    #f = open('qual_ipa_wordforms_russian.tsv')
+    #f = open('qual_ipa_lexemes_macedonian.tsv')
+    f = open('qual_ipa_wordforms_polish.tsv')
 
     f_lines = f.readlines()
     f_lines = f_lines[1:]  # РАБОЧАЯ ВЕРСИЯ ДЛЯ ВСЕХ СЛОВ
@@ -231,11 +237,42 @@ def M_3():
     #f_fin.write('all_codas_macedonian_lexemes' + '\n')
 
 
-    f_init = open('all_onsets_polish_wordforms.tsv', 'w')
-    f_init.write('all_onsets_polish_wordforms' + '\n')
+    #f_init = open('all_onsets_polish_wordforms.tsv', 'w')
+    #f_init.write('all_onsets_polish_wordforms' + '\n')
 
-    f_fin = open('all_codas_polish_wordforms.tsv', 'w')
-    f_fin.write('all_codas_polish_wordforms' + '\n')
+    #f_fin = open('all_codas_polish_wordforms.tsv', 'w')
+    #f_fin.write('all_codas_polish_wordforms' + '\n')
+
+
+    # ПУСТАЯ СТРОКА
+
+    #f_init = open('qual_all_onsets_russian_lexemes.tsv', 'w')
+    #f_init.write('quality_all_onsets_russian_lexemes' + '\n')
+
+    #f_fin = open('qual_all_codas_russian_lexemes.tsv', 'w')
+    #f_fin.write('quality_all_codas_russian_lexemes' + '\n')
+
+
+    #f_init = open('qual_all_onsets_russian_wordforms.tsv', 'w')
+    #f_init.write('quality_all_onsets_russian_wordforms' + '\n')
+
+    #f_fin = open('qual_all_codas_russian_wordforms.tsv', 'w')
+    #f_fin.write('quality_all_codas_russian_wordforms' + '\n')
+
+
+    #f_init = open('qual_all_onsets_macedonian_lexemes.tsv', 'w')
+    #f_init.write('quality_all_onsets_macedonian_lexemes' + '\n')
+
+    #f_fin = open('qual_all_codas_macedonian_lexemes.tsv', 'w')
+    #f_fin.write('quality_all_codas_macedonian_lexemes' + '\n')
+
+
+    f_init = open('qual_all_onsets_polish_wordforms.tsv', 'w')
+    f_init.write('quality_all_onsets_polish_wordforms' + '\n')
+
+    f_fin = open('qual_all_codas_polish_wordforms.tsv', 'w')
+    f_fin.write('quality_all_codas_polish_wordforms' + '\n')
+
 
     onset = 'V'
     coda = 'V'
@@ -277,16 +314,16 @@ def M_4():
     f_lines = f.readlines()
     f_lines = f_lines[1:]  # РАБОЧАЯ ВЕРСИЯ ДЛЯ ВСЕХ СЛОВ
 
-    #f_bt = open('big_table_lexemes_russian.tsv', 'w')
+    #f_bt = open('bt_lexemes_russian.tsv', 'w')
     #f_bt.write('lexeme_russian' + '\t' + 'number_syllables' + '\t' + 'onset' + '\t' + 'coda' + '\n')
 
-    #f_bt = open('big_table_wordforms_russian.tsv', 'w')
+    #f_bt = open('bt_wordforms_russian.tsv', 'w')
     #f_bt.write('wordforms_russian' + '\t' + 'number_syllables' + '\t' + 'onset' + '\t' + 'coda' + '\n')
 
-    #f_bt = open('big_table_lexemes_macedonian.tsv', 'w')
+    #f_bt = open('bt_lexemes_macedonian.tsv', 'w')
     #f_bt.write('lexeme_macedonian' + '\t' + 'number_syllables' + '\t' + 'onset' + '\t' + 'coda' + '\n')
 
-    f_bt = open('big_table_wordforms_polish.tsv', 'w')
+    f_bt = open('bt_wordforms_polish.tsv', 'w')
     f_bt.write('wordforms_polish' + '\t' + 'number_syllables' + '\t' + 'onset' + '\t' + 'coda' + '\n')
 
     initials = []
@@ -332,6 +369,101 @@ def M_4():
 
     # теперь посчитаем частотность
 
+# добавляет в таблицу качество
+def M_5():
+    f_o = open('lexemes_russian.tsv')
+    #f_o = open('wordforms_russian.tsv')
+    #f_o = open('lexemes_macedonian.tsv')
+    #f_o = open('wordforms_polish.tsv')
+
+    f_o_lines = f_o.readlines()
+    f_o_lines = f_o_lines[1:]
+
+    lines_o = [] # СЛОВА В ОРФОГРАФИИ
+    for line_o in f_o_lines:
+        line_o = re.sub('\n', '', line_o)
+        #line_o = line_o.split('\t')
+        lines_o.append(line_o)
+
+
+
+    f_bt = open('bt_lexemes_russian.tsv') # РАБОЧАЯ ТАБЛИЦА
+    #f_bt = open('bt_wordforms_russian.tsv')
+    #f_bt = open('bt_lexemes_macedonian.tsv')
+    #f_bt = open('bt_wordforms_polish.tsv')
+
+
+    f_bt_lines = f_bt.readlines()
+    f_bt_lines = f_bt_lines[1:]
+
+    lines_bt = []
+    for line_bt in f_bt_lines:
+        line_bt = re.sub('\n', '', line_bt)
+        line_bt = line_bt.split('\t')
+        lines_bt.append(line_bt)
+
+
+    # таблицы куда всё записывается
+    f_bt = open('big_table_lexemes_russian.tsv', 'w')
+    f_bt.write('lexeme_russian' + '\t' + 'number_syllables' + '\t' + 'lexeme_q1' + '\t' + 'onset_q1' + '\t' + 'coda_q1'
+               + '\t' + 'lexeme_q2' + '\t' + 'onset_q2' + '\t' + 'coda_q2' + '\n')
+
+    # f_bt = open('big_table_wordforms_russian.tsv', 'w')
+    # f_bt.write('wordforms_russian' + '\t' + 'number_syllables' + '\t' + 'onset' + '\t' + 'coda' + '\n')
+
+    # f_bt = open('big_table_lexemes_macedonian.tsv', 'w')
+    # f_bt.write('lexeme_macedonian' + '\t' + 'number_syllables' + '\t' + 'onset' + '\t' + 'coda' + '\n')
+
+    #f_bt = open('big_table_wordforms_polish.tsv', 'w')
+    #f_bt.write('wordforms_polish' + '\t' + 'number_syllables' + '\t' + 'onset' + '\t' + 'coda' + '\n')
+
+
+    f_q = open('qual_ipa_lexemes_russian.tsv')
+    # f_q = open('qual_ipa_wordforms_russian.tsv')
+    # f_q = open('qual_ipa_lexemes_macedonian.tsv')
+    # f_q = open('qual_ipa_wordforms_polish.tsv')
+
+    f_q_lines = f_q.readlines()
+    f_q_lines = f_q_lines[1:]  # РАБОЧАЯ ВЕРСИЯ ДЛЯ ВСЕХ СЛОВ
+
+    lines_f_q = []
+    for line_fq in f_q_lines:
+        line_fq = re.sub('\n', '', line_fq)
+        line_fq = line_fq.split('\t')
+        lines_f_q.append(line_fq)
+
+
+    for i in range(0, len(lines_bt)):
+        line_q = str(lines_f_q[i])
+        #print(line_q)
+    #for line_q in f_q_lines:
+        #line_q = re.sub('\n', '', line_q)
+        #line_q = line_q.split('\t')
+        line_q = line_q.replace('[', '')
+        line_q = line_q.replace(']', '')
+        line_q = line_q.replace("'", "")
+
+
+        onset = 'V'
+        coda = 'V'
+
+        # print(line)
+        # res_init = re.match('([^V]+?)(((-)*?[V])|$)', line)
+        res_init = re.search('^([^V]+?)(((-)*?[V])|$)', line_q)
+        if res_init:
+            onset = res_init.group(1)
+
+        # print(line)
+        res_fin = re.search('[V]*?-([^V]+?$)', line_q)
+        if res_fin:
+            coda = res_fin.group(1)
+
+        word = lines_o[i]
+        f_bt.write(str(word) + '\t' + str(lines_bt[i][1]) + '\t' + str(lines_bt[i][0]) + '\t' + str(lines_bt[i][2])
+                   + '\t' + str(lines_bt[i][3]) + '\t' + str(line_q) + '\t' + str(onset) + '\t' + str(coda) + '\n')
+
+    f_q.close()
+
 # запись в словарь
 def F_w_d(my_dict, my_key):
     if my_key not in my_dict:
@@ -358,7 +490,7 @@ def F_sort_wd_items(my_items, items_name):
     F_write_in_file(items_freq, f_name)
 
 # частотность последовательностей
-def M_5():
+def M_6():
 
     onsets_list = []
     finals_list = []
@@ -366,10 +498,10 @@ def M_5():
     onsets_dict = {}
     codas_dict = {}
 
-    #f_tt = open('big_table_lexemes_russian.tsv')
-    #f_tt = open('big_table_wordforms_russian.tsv')
-    #f_tt = open('big_table_lexemes_macedonian.tsv')
-    f_tt = open('big_table_wordforms_polish.tsv')
+    #f_tt = open('bt_lexemes_russian.tsv')
+    #f_tt = open('bt_wordforms_russian.tsv')
+    #f_tt = open('bt_lexemes_macedonian.tsv')
+    f_tt = open('bt_wordforms_polish.tsv')
 
     f_lis = f_tt.readlines()
     f_lis = f_lis[1:]
@@ -403,7 +535,7 @@ def M_5():
     F_sort_wd_items(codas_dict, 'coda_polish_wordforms')
 
 # должна считать вероятность и сравнивать
-def M_6():
+def M_7():
     f_name = ('frequency_onset_russian_lexemes.tsv')
     # f_name = ('frequency_coda_russian_lexemes.tsv')
 
@@ -443,7 +575,7 @@ def M_6():
         print(prob)
 
 # сделаем сбор интервокальных кластеров и проверим их
-def M_7():
+def M_8():
     f_init = ('monosyllabic_onsets_russian_lexemes.tsv')
     f_fin = ('monosyllabic_codas_russian_lexemes.tsv')
 
@@ -469,16 +601,18 @@ def M_7():
 
 #M_1()
 
-M_2()
+#M_2()
 
 #M_3()
 
 #M_4()
 
-#M_5()
+M_5()
 
 #M_6()
 
 #M_7()
+
+#M_8()
 
 print("--- %s seconds ---" % (time.time() - start_time))
