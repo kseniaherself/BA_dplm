@@ -110,30 +110,36 @@ def F_tr(word):
         if crutch_7 in word:
             word = word.replace(crutch_7, crutch_8)
 
+        crutch_9 = jot + '-' + el
+        crutch_10 = jot + '-' + voc
+        for crutch_9 in word:
+            word = word.replace(crutch_9, crutch_10)
+
         for v in jot_voc:
 
             for vv in jot_voc:
-                crutch_9 = el + '-' + v + '-' + vv
-                crutch_10 = el + '-' + jot + '-' + voc + jot + '-' + voc
 
-                if crutch_9 in word:
-                    word = word.replace(crutch_9, crutch_10)
+                crutch_11 = el + '-' + v + '-' + vv
+                crutch_12 = el + '-' + jot + '-' + voc + jot + '-' + voc
+                if crutch_11 in word:
+                    word = word.replace(crutch_11, crutch_12)
 
-            crutch_11 = el + '-' + v
-            crutch_12 = el + '-' + jot + '-' + voc
-            if crutch_11 in word:
-                word = word.replace(crutch_11, crutch_12)
-
-        for s in ipa_mutable_sonorant:
-            crutch_13 = s + '-' + el
-            crutch_14 = s + '-' + voc
+            crutch_13 = el + '-' + v
+            crutch_14 = el + '-' + jot + '-' + voc
             if crutch_13 in word:
-                #print(word)
                 word = word.replace(crutch_13, crutch_14)
 
+        for s in ipa_mutable_sonorant:
+            crutch_15 = s + '-' + el
+            crutch_16 = s + '-' + voc
+            if crutch_15 in word:
+                #print(word)
+                word = word.replace(crutch_15, crutch_16)
 
-        if el in word:
-            print(el)
+
+    for vocfd in jot_voc:
+        if vocfd in word:
+        #   print(el)
             print(word)
 
             #word = word.replace(el, voc)
