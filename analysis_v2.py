@@ -122,8 +122,14 @@ def M_2():
     #print(f_lines[-1])
     print(f_lines[7967210])
 
+def M_3():
+    f_name = open('bt_ipa_lexemes_russian.tsv')
+    df = pd.read_csv(f_name, sep='\t', usecols=['ipa_russian'])
+
+
+
 #M_1()
-#M_2() 
+#M_2()
 
 
 print("--- %s seconds ---" % (time.time() - start_time))
