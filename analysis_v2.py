@@ -110,16 +110,20 @@ def M_1():
     #df.to_csv(f2_name, sep='\t', encoding='utf-8') #, index=False)
 
 
+def M_2():
+
+    #f = open('bt_ipa_lexemes_russian.tsv')
+    #f = open('bt_ipa_wordforms_russian.tsv')
+    #f = open('bt_ipa_lexemes_macedonian.tsv')
+    f = open('bt_ipa_wordforms_polish.tsv')
+
+    f_lines = f.readlines()
+    f.close()
+    #print(f_lines[-1])
+    print(f_lines[7967210])
+
 #M_1()
+#M_2() 
 
-#f = open('bt_ipa_lexemes_russian.tsv')
-#f = open('bt_ipa_wordforms_russian.tsv')
-#f = open('bt_ipa_lexemes_macedonian.tsv')
-f = open('bt_ipa_wordforms_polish.tsv')
-
-f_lines = f.readlines()
-f.close()
-#print(f_lines[-1])
-print(f_lines[7967210])
 
 print("--- %s seconds ---" % (time.time() - start_time))
