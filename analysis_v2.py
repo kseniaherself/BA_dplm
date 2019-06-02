@@ -124,7 +124,7 @@ def M_2():
 
 def M_3():
     f_name = open('bt_ipa_lexemes_russian.tsv')
-    df = pd.read_csv(f_name, sep='\t', usecols=['ipa_russian'])
+    df = pd.read_csv(f_name, sep='\t', usecols=['word_ortho', 'number_syllables', 'word_q1', 'onset_q1', 'coda_q1', 'word_q2', 'onset_q2', 'coda_q2'])
 
 
 
