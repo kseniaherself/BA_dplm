@@ -505,15 +505,72 @@ def M_4():
     f_3_mono_qua.close()
     f_3_mono_man.close()
 
-# проверка интервокальных клстеров
+# проверка интервокальных кластеров 1: встречаются ли они все в интервокале или нет
 def M_5():
-    
+    f_2 = ('russian_lexemes.tsv')
+    # f_2 = ('russian_wordforms.tsv')
+    # f_2 = ('macedonian_lexemes.tsv')
+    #f_2 = ('polish_wordforms.tsv')
+
+    f3aq_name = 'intervocalic_all_quality_' + f_2
+    f3am_name = 'intervocalic_all_manner_' + f_2
+    f3mq_name = 'intervocalic_monosyllabic_quality_' + f_2
+    f3mm_name = 'intervocalic_monosyllabic_manner_' + f_2
+
+    # поменять имя
+    f_name = ('bt_ipa_lexemes_russian.tsv')
+    # f_name = ('bt_ipa_wordforms_russian.tsv')
+    #f_name = ('bt_ipa_lexemes_macedonian.tsv')
+    # f_name = ('bt_ipa_wordforms_polish.tsv')
+
+    f_1 = open(f_name)
+    f_1_lines = f_1.readlines()
+    f_1_lines = f_1_lines[1:]
+    man_words = []
+    qua_words = []
+    for line in f_1_lines:
+        line_bt = re.sub('\n', '', line)
+        line_bt = line_bt.split('\t')
+
+        man_words.append(line_bt[3])
+        qua_words.append(line_bt[6])
+
+    # интервокальные все качество
+    f3aq = open(f3aq_name)
+    f3aq = f3aq.readlines()
+    f3aq = f3aq[1:]
+
+    # интервокальные все способ
+    f3am = open(f3am_name)
+    f3am = f3am.readlines()
+    f3am = f3am[1:]
+    for element in f3am:
+
+
+    # интервокальные односложные качество
+    f3mq = open(f3mq_name)
+    f3mq = f3mq.readlines()
+    f3mq = f3mq[1:]
+
+    # интервокальные односложные способ
+    f3mm = open(f3mm_name)
+    f3mm = f3mm.readlines()
+    f3mm = f3mm[1:]
+
+
+
+
+# проверка интервокальных кластеров 2: все ли интервокалы они описывают
+# def M_6():
+
+
 
 #M_1()
 #M_2()
 #M_3()
 #M_4()
 M_5()
+#M_6()
 
 
 print("--- %s seconds ---" % (time.time() - start_time))
