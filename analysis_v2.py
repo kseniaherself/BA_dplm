@@ -507,10 +507,10 @@ def M_4():
 
 # проверка интервокальных кластеров 1: встречаются ли они все в интервокале или нет
 def M_5():
-    f_2 = ('russian_lexemes.tsv')
-    # f_2 = ('russian_wordforms.tsv')
-    # f_2 = ('macedonian_lexemes.tsv')
-    #f_2 = ('polish_wordforms.tsv')
+    #f_2 = ('russian_lexemes.tsv')
+    #f_2 = ('russian_wordforms.tsv')
+    #f_2 = ('macedonian_lexemes.tsv')
+    f_2 = ('polish_wordforms.tsv')
 
     f3aq_name = 'intervocalic_all_quality_' + f_2
     f3am_name = 'intervocalic_all_manner_' + f_2
@@ -525,26 +525,69 @@ def M_5():
 
     f_1 = open(f_name)
     f_1_lines = f_1.readlines()
+    f_1.close()
     f_1_lines = f_1_lines[1:]
-    man_words = []
-    qua_words = []
+
+    man_words = ''
+    qua_words = ''
+
+    #man_words = []
+    #qua_words = []
+
     for line in f_1_lines:
         line_bt = re.sub('\n', '', line)
         line_bt = line_bt.split('\t')
 
-        man_words.append(line_bt[3])
-        qua_words.append(line_bt[6])
+        man_word = str(line_bt[3]).strip()
+        qua_word = str(line_bt[6]).strip()
+        #print(qua_word)
+
+        man_words = man_words + '; ' + man_word
+        qua_words = qua_words + ';' + qua_word
+
+        #man_words.append(line_bt[3])
+        #qua_words.append(line_bt[6])
+    #print(man_words)
+
 
     # интервокальные все качество
+
     f3aq = open(f3aq_name)
     f3aq = f3aq.readlines()
     f3aq = f3aq[1:]
+    #print(f3aq)
+
+    f3aq_out_name = 'excess_' + f3aq_name
+    f3aq_out = open(f3aq_out_name, 'w')
+    f3aq_out.write('excess_clusters_intervocalic_all_quality' + '\n')
+
+    for element in f3aq:
+        element = re.sub('\n', '', element)
+        #print('the element:', element)
+        #for i in range(0, len(qua_words)):
+        if element not in qua_words:
+            #print(element)
+            f3aq_out.write(element + '\n')
+
+    f3aq_out.close()
+
 
     # интервокальные все способ
     f3am = open(f3am_name)
     f3am = f3am.readlines()
     f3am = f3am[1:]
-    for element in f3am:
+
+    f3am_out_name = 'excess_' + f3am_name
+    f3am_out = open(f3am_out_name, 'w')
+    f3am_out.write('excess_clusters_intervocalic_all_manner' + '\n')
+
+    for elemen in f3am:
+        elemen = re.sub('\n', '', elemen)
+        if elemen not in man_words:
+            #print(elemen)
+            f3am_out.write(elemen + '\n')
+
+    f3am_out.close()
 
 
     # интервокальные односложные качество
@@ -552,16 +595,44 @@ def M_5():
     f3mq = f3mq.readlines()
     f3mq = f3mq[1:]
 
+    f3mq_out_name = 'excess_' + f3mq_name
+    f3mq_out = open(f3mq_out_name, 'w')
+    f3mq_out.write('excess_clusters_intervocalic_monosyllabic_quality' + '\n')
+
+    for eleme in f3mq:
+        eleme = re.sub('\n', '', eleme)
+        if eleme not in qua_words:
+            #print(eleme)
+            f3mq_out.write(eleme + '\n')
+
+    f3mq_out.close()
+
+
     # интервокальные односложные способ
     f3mm = open(f3mm_name)
     f3mm = f3mm.readlines()
     f3mm = f3mm[1:]
 
+    f3mm_out_name = 'excess_' + f3mm_name
+    f3mm_out = open(f3mm_out_name, 'w')
+    f3mm_out.write('excess_clusters_intervocalic_monosyllabic_manner' + '\n')
+    #print(f3mm)
+    #print(man_words)
+
+    for elem in f3mm:
+        elem = re.sub('\n', '', elem)
+        #print(elem)
+        if elem not in man_words:
+            #print(elem)
+            f3mm_out.write(elem + '\n')
+
+    f3mm_out.close()
 
 
 
 # проверка интервокальных кластеров 2: все ли интервокалы они описывают
-# def M_6():
+def M_6():
+
 
 
 
@@ -569,8 +640,8 @@ def M_5():
 #M_2()
 #M_3()
 #M_4()
-M_5()
-#M_6()
+#M_5()
+M_6()
 
 
 print("--- %s seconds ---" % (time.time() - start_time))
