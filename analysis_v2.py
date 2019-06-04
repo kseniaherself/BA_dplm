@@ -632,7 +632,191 @@ def M_5():
 
 # проверка интервокальных кластеров 2: все ли интервокалы они описывают
 def M_6():
+    #f_2 = ('russian_lexemes.tsv')
+    #f_2 = ('russian_wordforms.tsv')
+    #f_2 = ('macedonian_lexemes.tsv')
+    f_2 = ('polish_wordforms.tsv')
 
+    n_f3aq_name = 'intervocalic_all_quality_' + f_2
+    n_f3am_name = 'intervocalic_all_manner_' + f_2
+    n_f3mq_name = 'intervocalic_monosyllabic_quality_' + f_2
+    n_f3mm_name = 'intervocalic_monosyllabic_manner_' + f_2
+
+    # поменять имя
+    #f_name = ('bt_ipa_lexemes_russian.tsv')
+    #f_name = ('bt_ipa_wordforms_russian.tsv')
+    #f_name = ('bt_ipa_lexemes_macedonian.tsv')
+    f_name = ('bt_ipa_wordforms_polish.tsv')
+
+    f_1 = open(f_name)
+    f_1_lines = f_1.readlines()
+    f_1.close()
+    f_1_lines = f_1_lines[1:]
+
+
+    int_q_full = []
+    int_m_full = []
+
+
+    for line in f_1_lines:
+        line_bt = re.sub('\n', '', line)
+        line_bt = line_bt.split('\t')
+
+        man_word = str(line_bt[3]).strip()
+        qua_word = str(line_bt[6]).strip()
+        # print(qua_word)
+
+        man_word_sp = man_word.split('V')
+        #print(man_word_sp)
+        for element in man_word_sp:
+            if element != '':
+                if element != '-':
+                    if element not in int_m_full:
+                        int_m_full.append(element)
+
+        qua_word_sp = qua_word.split('V')
+        #print(qua_word_sp)
+        for elemen in qua_word_sp:
+            if elemen != '':
+                if elemen != '-':
+                    if elemen not in int_q_full:
+                        int_q_full.append(elemen)
+                        #print(elemen)
+
+
+    #print(int_m_full)
+    #print(int_q_full)
+
+    int_q_int = []
+    int_m_int = []
+
+    fileformreal = open(('presented_manner_clusters_in_' + f_2), 'w')
+    fileformreal.write('presented_intervocalic_manner_clusters' + '\n')
+
+    fileforqreal = open(('presented_quality_clusters_in_' + f_2), 'w')
+    fileforqreal.write('presented_intervocalic_quality_clusters' + '\n')
+
+    for eleme in int_m_full:
+        interv_cl_m = re.search('-([ORLNJ-]+)-', eleme)
+        if interv_cl_m:
+            #print(interv_cl_m.group(1))
+            if interv_cl_m.group(1) not in int_m_int:
+                int_m_int.append(interv_cl_m.group(1))
+                fileformreal.write(interv_cl_m.group(1) + '\n')
+
+    for elem in int_q_full:
+        interv_cl_q = re.search('-([OS-]+)-', elem)
+        if interv_cl_q:
+            #print(interv_cl_q.group(1))
+            if interv_cl_q.group(1) not in int_q_int:
+                int_q_int.append(interv_cl_q.group(1))
+                fileforqreal.write(interv_cl_q.group((1)) + '\n')
+
+    fileformreal.close()
+    fileforqreal.close()
+
+    #print(int_m_int)
+    #print(int_q_int)
+
+    # все слова: качество
+    nf3aq = open(n_f3aq_name)
+    nf3aq = nf3aq.readlines()
+    nf3aq = nf3aq[1:]
+    #print(nf3aq)
+
+    nf3aq_list = []
+    for ele in nf3aq:
+        ele = re.sub('\n', '', ele)
+        nf3aq_list.append(ele)
+    #print(nf3aq_list)
+
+    n_f3aq_out_name = 'not_predicted_' + n_f3aq_name
+    nf3aq_out = open(n_f3aq_out_name, 'w')
+    nf3aq_out.write('not_predicted_intervocalic_all_quality' + '\n')
+
+    np_aq = []
+    for eaq in int_q_int:
+        if eaq not in nf3aq_list:
+            print(eaq)
+            np_aq.append(eaq)
+            nf3aq_out.write(eaq + '\n')
+
+    nf3aq_out.close()
+
+    # односложные: качество
+    nf3mq = open(n_f3mq_name)
+    nf3mq = nf3mq.readlines()
+    nf3mq = nf3mq[1:]
+    # print(nf3aq)
+
+    nf3mq_list = []
+    for el in nf3mq:
+        el = re.sub('\n', '', el)
+        nf3mq_list.append(el)
+    # print(nf3aq_list)
+
+    n_f3mq_out_name = 'not_predicted_' + n_f3mq_name
+    nf3mq_out = open(n_f3mq_out_name, 'w')
+    nf3mq_out.write('not_predicted_intervocalic_monosyllabic_quality' + '\n')
+
+    np_mq = []
+    for emq in int_q_int:
+        if emq not in nf3mq_list:
+            print(emq)
+            np_mq.append(emq)
+            nf3mq_out.write(emq + '\n')
+
+    nf3mq_out.close()
+
+    # все слова: способ
+    nf3am = open(n_f3am_name)
+    nf3am = nf3am.readlines()
+    nf3am = nf3am[1:]
+    #print(nf3aq)
+
+    nf3am_list = []
+    for eles in nf3am:
+        eles = re.sub('\n', '', eles)
+        nf3am_list.append(eles)
+    #print(nf3aq_list)
+
+    n_f3am_out_name = 'not_predicted_' + n_f3am_name
+    nf3am_out = open(n_f3am_out_name, 'w')
+    nf3am_out.write('not_predicted_intervocalic_all_manner' + '\n')
+
+    np_am = []
+    for eam in int_m_int:
+        if eam not in nf3am_list:
+            print(eam)
+            np_am.append(eam)
+            nf3am_out.write(eam + '\n')
+
+    nf3am_out.close()
+
+    # односложные: способ
+    nf3mm = open(n_f3mm_name)
+    nf3mm = nf3mm.readlines()
+    nf3mm = nf3mm[1:]
+    # print(nf3aq)
+
+    nf3mm_list = []
+    for els in nf3mm:
+        els = re.sub('\n', '', els)
+        nf3mm_list.append(els)
+    # print(nf3aq_list)
+
+    n_f3mm_out_name = 'not_predicted_' + n_f3mm_name
+    nf3mm_out = open(n_f3mm_out_name, 'w')
+    nf3mm_out.write('not_predicted_intervocalic_monosyllabic_manner' + '\n')
+
+    np_mm = []
+    for emm in int_m_int:
+        if emm not in nf3mm_list:
+            print(emm)
+            np_mm.append(emm)
+            nf3mm_out.write(emm + '\n')
+
+    nf3mm_out.close()
 
 
 
