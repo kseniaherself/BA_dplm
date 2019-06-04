@@ -340,20 +340,10 @@ def M_3():
 
 # делает списки потенциальных интервокальных кластеров
 def M_4():
-    # ПОМЕНЯТЬ ИМЯ
-    #f_name = ('bt_ipa_lexemes_russian.tsv')
-    # f_name = ('bt_ipa_wordforms_russian.tsv')
-    #f_name = ('bt_ipa_lexemes_macedonian.tsv')
-    # f_name = ('bt_ipa_wordforms_polish.tsv')
-
-    #f_1 = open(f_name)
-    #f_1_lines = f_1.readlines()
-    #f_1_lines = f_1_lines[1:]
-
-    # f_2 = ('russian_lexemes.tsv')
-    # f_2 = ('russian_wordforms.tsv')
-    f_2 = ('macedonian_lexemes.tsv')
-    # f_2 = ('polish_wordforms.tsv')
+    #f_2 = ('russian_lexemes.tsv')
+    #f_2 = ('russian_wordforms.tsv')
+    #f_2 = ('macedonian_lexemes.tsv')
+    f_2 = ('polish_wordforms.tsv')
 
     mono = 'monosyllabic_'
     al = 'all_'
@@ -400,7 +390,7 @@ def M_4():
 
     f_2_mono_qua_cos = open(f_name_2_mono_qua_cos)
     f2mqc = f_2_mono_qua_cos.readlines()
-    f1mqc = f2mqc[1:]
+    f2mqc = f2mqc[1:]
 
 
     f_2_mono_man_ons = open(f_name_2_mono_man_ons)
@@ -420,14 +410,110 @@ def M_4():
     f_2_mono_man_ons.close()
     f_2_mono_man_cos.close()
 
-    for element in f2aqc:
+    seqs_1 = []
+    seqs_2 = []
+    seqs_3 = []
+    seqs_4 = []
+
+    # КАЧЕСТВО ВСЕ
+    f3aq_name = 'intervocalic_all_quality_' + f_2
+    f_3_all_qua = open(f3aq_name, 'w')
+    f_3_all_qua.write('intervocalic_all_quality' + '\n')
+
+    for element_c in f2aqc:
+        element_c = element_c.replace('\n', '')
+
+        for element_o in f2aqo:
+            element_o = element_o.replace('\n', '')
+
+            seq_1 = element_c + '-' + element_o
+            seq_1 = seq_1.replace('V-', '')
+            seq_1 = seq_1.replace('-V', '')
+            seq_1 = seq_1.replace('V', '')
+
+            if seq_1 not in seqs_1:
+                if seq_1 != '':
+                    f_3_all_qua.write(seq_1 + '\n')
+                    seqs_1.append(seq_1)
+
+    # СПОСОБ ВСЕ
+    f3am_name = 'intervocalic_all_manner_' + f_2
+    f_3_all_man = open(f3am_name, 'w')
+    f_3_all_man.write('intervocalic_all_manner' + '\n')
+
+    for elemen_c in f2amc:
+        elemen_c = elemen_c.replace('\n', '')
+
+        for elemen_o in f2amo:
+            elemen_o = elemen_o.replace('\n', '')
+
+            seq_2 = elemen_c + '-' + elemen_o
+            seq_2 = seq_2.replace('V-', '')
+            seq_2 = seq_2.replace('-V', '')
+            seq_2 = seq_2.replace('V', '')
+
+            if seq_2 not in seqs_2:
+                if seq_2 != '':
+                    f_3_all_man.write(seq_2 + '\n')
+                    seqs_2.append(seq_2)
+
+    # КАЧЕСТВО ОДНОСЛОЖНЫЕ
+    f3mq_name = 'intervocalic_monosyllabic_quality_' + f_2
+    f_3_mono_qua = open(f3mq_name, 'w')
+    f_3_mono_qua.write('intervocalic_monosyllabic_quality' + '\n')
+
+    for eleme_c in f2mqc:
+        eleme_c = eleme_c.replace('\n', '')
+
+        for eleme_o in f2mqo:
+            eleme_o = eleme_o.replace('\n', '')
+
+            seq_3 = eleme_c + '-' + eleme_o
+            seq_3 = seq_3.replace('V-', '')
+            seq_3 = seq_3.replace('-V', '')
+            seq_3 = seq_3.replace('V', '')
+
+            if seq_3 not in seqs_3:
+                if seq_3 != '':
+                    f_3_mono_qua.write(seq_3 + '\n')
+                    seqs_3.append(seq_3)
+
+    # СПОСОБ ОДНОСЛОЖНЫЕ
+    f3mm_name = 'intervocalic_monosyllabic_manner_' + f_2
+    f_3_mono_man = open(f3mm_name, 'w')
+    f_3_mono_man.write('intervocalic_monosyllabic_manner' + '\n')
+
+    for elem_c in f2mmc:
+        elem_c = elem_c.replace('\n', '')
+
+        for elem_o in f2mmo:
+            elem_o = elem_o.replace('\n', '')
+
+            seq_4 = elem_c + '-' + elem_o
+            seq_4 = seq_4.replace('V-', '')
+            seq_4 = seq_4.replace('-V', '')
+            seq_4 = seq_4.replace('V', '')
+
+            if seq_4 not in seqs_4:
+                if seq_4 != '':
+                    f_3_mono_man.write(seq_4 + '\n')
+                    seqs_4.append(seq_4)
 
 
+    f_3_all_qua.close()
+    f_3_all_man.close()
+    f_3_mono_qua.close()
+    f_3_mono_man.close()
+
+# проверка интервокальных клстеров
+def M_5():
+    
 
 #M_1()
 #M_2()
 #M_3()
-M_4()
+#M_4()
+M_5()
 
 
 print("--- %s seconds ---" % (time.time() - start_time))
