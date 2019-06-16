@@ -217,19 +217,19 @@ Indo-European > Balto-Slavic > Slavic >
  - все возможные инициали первых слогов слов 
  - все возможные финали последних слогов слов 
 
-## (4)
+## М (4)
 
 4. Form a list of all possible onsets and codas of all monosyllabic words in the sample. List all the combinations of it ([codas cluster]+[onset cluster]: OSVSS > SSOS) 
 
-## (5)
+## М (5)
 
 5. On the basis of the data obtained, make a general (primary) model of the syllable. 
 
-## (6) 
+## М (6) 
 
 6. Test the primary model on all words of the sample, including polysyllabic words. If during the test the mode detects words with intervocalic clusters out of model predictions, the researcher needs to look through such cases and modify the model with respect to the exceptions. 
 
-## (7)
+## М (7)
 
 7. (Optional) Check the distribution of different types of syllables in different positions of the word, find out if there are no certain types of syllables to the position at the end or at the beginning or in the middle of the word. 
 
