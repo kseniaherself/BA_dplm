@@ -303,4 +303,35 @@ DT::datatable(russian_intervoc_npred)
 
 <!--- потому что это попросту могут быть исключения или могут быть объяснены -->
 
+*андоррский* 
+
+## Перепорождение 
+
+```{r russian_intervoc_exc, echo = FALSE}
+russian_intervoc_exc <- read_tsv("excess_intervocalic_all_quality_russian_wordforms.tsv", col_names = TRUE)
+DT::datatable(russian_intervoc_exc)
+```
+
+<!--- вот, сложные кластеры инициалей и фналей дают возможность такого -->
+
+## 
+
+OOO-V-OOO, 
+
+OOO-V-SOO, 
+
+OOO-V-SSO, 
+
+OOS-V-OOO, 
+
+OOS-V-SOO, 
+
+OOS-V-SSO, 
+
+OSS-V-OOO, 
+
+OSS-V-SOO
+
+OSS-V-SSO, 
+
 ## Литература 
